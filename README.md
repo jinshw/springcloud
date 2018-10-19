@@ -20,3 +20,13 @@
     - 刷新http://localhost:9411
 
 
+## docker 部署
+* 建镜像
+mvn clean
+mvn package docker:build
+
+* 运行镜像
+docker run --name eureka-server -p 8761:8761 -t forezp/eureka-server
+
+docker run --link eureka-server:8761 -p 9001:9001 -t forezp/provider
+
